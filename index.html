@@ -21,3 +21,39 @@
 
 </body>
 </html>
+<div id="ui-overlay">
+      <img src="marker.png" alt="Scan Target">
+      <p>Please point your camera at this image to start the AR experience.</p>
+    </div>
+
+    
+    <a-scene mindar-image="imageTargetSrc: ./targets.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+
+      <a-entity id="ar-target" mindar-image-target="targetIndex: 0">
+        
+
+        <a-gltf-model rotation="0 0 0" position="0 0 0" scale="0.05 0.05 0.05" src="./modeliniz.gltf"></a-gltf-model>
+
+      </a-entity>
+    </a-scene>
+
+   
+    <script>
+      const targetEntity = document.querySelector('#ar-target');
+      const overlay = document.querySelector('#ui-overlay');
+
+      targetEntity.addEventListener("targetFound", event => 
+        overlay.style.opacity = "0"; 
+        setTimeout(() => { overlay.style.display = "none"; }, 500)
+
+      targetEntity.addEventListener("targetLost", event => 
+        overlay.style.display = "flex";
+        setTimeout(() => { overlay.style.opacity = "1"; }, 10)
+          
+    </script>
+
+  </body>
+</html>
