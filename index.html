@@ -39,7 +39,26 @@
 
       </a-entity>
     </a-scene>
+ <a-assets>
+        <img id="mindar" src="marker.png" crossorigin="anonymous">
+      </a-assets>
 
+      <a-marker
+        type="pattern"
+        url="pattern-marker.patt"
+        smooth="true"
+        smoothCount="10"
+        smoothTolerance="0.01"
+        smoothThreshold="5"
+        emitevents="true">
+
+        <a-image
+          src="#marker"
+          rotation="-90 0 0"
+          position="0 0.01 0"
+          width="2.4"
+          height="1.6"
+          opacity="1">
    
     <script>
       const targetEntity = document.querySelector('#ar-target');
